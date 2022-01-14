@@ -11,8 +11,8 @@ RUN mkdir /var/www -p \
     && apt update \
     && apt install -y \
         iputils-ping \
-    && groupmod -g "$WWWGROUP" www-data \
-    && usermod -u "$WWWUSER" www-data \
+    && groupmod -g "$WWWGROUP" nginx \
+    && usermod -u "$WWWUSER" nginx \
     && chown -R $WWWUSER:$WWWGROUP \
         /var/cache/nginx/ \
         /etc/nginx/ \
