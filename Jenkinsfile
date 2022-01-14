@@ -2,13 +2,16 @@
 node('master') {
     checkout scm
     docker.withRegistry('', 'dockerhub-creds'){
+        def image = '';
+
         stage('build') {
-            def image = docker.build("familyresearchcouncil/nginx", './')
+            image = docker.build("familyresearchcouncil/nginx", './')
 
         }
 
-        stage('push'){
+        stage('push') {
             image.push()
+
             image.push("${env.BRANCH_NAME}")
         }
     }
