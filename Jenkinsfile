@@ -5,9 +5,11 @@ node('master') {
         stage('build') {
             def image = docker.build("familyresearchcouncil/nginx", './')
 
-            if( env.BRANCH_NAME == 'master' ){
-                image.push()
-            }
+        }
+
+        stage('push'){
+            image.push()
+            image.push("${env.BRANCH_NAME}")
         }
     }
 }
