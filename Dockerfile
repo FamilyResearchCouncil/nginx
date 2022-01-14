@@ -11,8 +11,9 @@ RUN apt update \
 
 RUN groupmod -g "$WWWGROUP" www-data \
     && usermod -u "$WWWUSER" www-data \
-    && chown "$WWWUSER:$WWWGROUP" -R \
+    && chown -R $WWWUSER:$WWWGROUP\
         /var/cache/nginx \
         /var/run
 
 
+USER www-data
