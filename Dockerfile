@@ -13,7 +13,8 @@ RUN groupmod -g "$WWWGROUP" www-data \
     && usermod -u "$WWWUSER" www-data \
     && chown -R $WWWUSER:$WWWGROUP\
         /var/cache/nginx \
-        /var/run
+        /var/run \
+    && ls -la /var/run
 
 
 USER www-data
