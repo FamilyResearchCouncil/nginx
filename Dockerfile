@@ -7,10 +7,8 @@ WORKDIR /var/www/html
 COPY ./nginx.conf /etc/nginx/templates/default.conf.template
 
 RUN mkdir /var/www -p \
-    && echo "alias ls='ls -la --color'" >> /var/www/.bashrc \
     && apt update \
-    && apt install -y \
-        iputils-ping \
+    && apt install -y iputils-ping \
     && groupmod -g "$WWWGROUP" nginx \
     && usermod -u "$WWWUSER" nginx \
     && chown -R $WWWUSER:$WWWGROUP \
